@@ -1,23 +1,33 @@
-import { useState } from "react";
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+import Incrementation from "./Components/Incrementation";
+import Decrementation from "./Components/Decrementation";
 
 // const state = useState()
 
 const App = () => {
-  const [count, setcount] = useState(1);
-  // let count = 1;
-  const IncNum = () => {
-    setcount(count + 1);
-    console.log("clicked");
-  };
-
-  return (
-    <div>
-      <h1>{count}</h1>
-      <button onClick={IncNum}> Click me</button>
+return(
+  <Router>
+    <div className="container">
+      <ul>
+        <li>
+          <Link className = "comp-link" to = "/Increasing" >
+            Incrementation
+          </Link>
+        </li>
+        <li>
+          <Link className = "comp-link" to = "/Decreasing">
+            Decrementation
+          </Link>
+        </li>
+      </ul>
     </div>
-    
-  );
-};
+  <Routes>
+    <Route path = "/Increasing" element = {<Incrementation />} />
+    <Route path = "/Decreasing" element = {<Decrementation />}/>
+  </Routes>
+  </Router>
+)};
 
 export default App;
